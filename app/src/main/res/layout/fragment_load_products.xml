@@ -1,0 +1,54 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android">
+
+    <data>
+
+        <import type="android.view.View" />
+
+        <variable
+            name="uiState"
+            type="com.hordiiko.cfg.presentation.loadProducts.LoadProductsUiState" />
+
+        <variable
+            name="viewModel"
+            type="com.hordiiko.cfg.presentation.loadProducts.LoadProductsViewModel" />
+    </data>
+
+    <LinearLayout
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:fitsSystemWindows="true"
+        android:orientation="vertical">
+
+        <FrameLayout
+            android:layout_width="match_parent"
+            android:layout_height="0dp"
+            android:layout_weight="1">
+
+            <ProgressBar
+                android:layout_width="wrap_content"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:visibility="@{uiState.isLoading ? View.VISIBLE : View.GONE}" />
+
+            <TextView
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:layout_margin="@dimen/spacing_medium"
+                android:gravity="center"
+                android:text="@{uiState.errorMessage}"
+                android:visibility="@{uiState.errorMessage != null ? View.VISIBLE : View.GONE}" />
+
+        </FrameLayout>
+
+        <Button
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_gravity="center"
+            android:layout_margin="@dimen/spacing_medium"
+            android:enabled="@{!uiState.isLoading}"
+            android:onClick="@{() -> viewModel.onLoadProductsClick()}"
+            android:text="@string/load_data" />
+
+    </LinearLayout>
+</layout>

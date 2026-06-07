@@ -33,7 +33,7 @@ class ProductRepositoryImpl @Inject constructor(
                     }
             }
 
-        productDao.insertProductsWithReviews(
+        productDao.replaceProductsWithReviews(
             products = productEntities,
             reviews = reviewEntities
         )
