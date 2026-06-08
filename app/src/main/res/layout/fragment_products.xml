@@ -1,0 +1,20 @@
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <data>
+
+        <variable
+            name="uiState"
+            type="com.hordiiko.cfg.presentation.products.model.ProductsUiState" />
+    </data>
+
+    <androidx.recyclerview.widget.RecyclerView
+        android:id="@+id/products_recycler_view"
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:layout_margin="@dimen/spacing_medium"
+        android:fitsSystemWindows="true"
+        app:items="@{uiState.products}"
+        app:layoutManager="androidx.recyclerview.widget.LinearLayoutManager" />
+
+</layout>

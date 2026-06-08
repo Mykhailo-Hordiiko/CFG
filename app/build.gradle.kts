@@ -61,4 +61,5 @@ dependencies {
     implementation(libs.squareup.retrofit)
     implementation(libs.squareup.converter.gson)
     implementation(libs.jetbrains.kotlinx.coroutines.android)
+    implementation(libs.bumptech.glide)
 }
