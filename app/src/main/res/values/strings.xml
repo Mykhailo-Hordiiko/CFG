@@ -4,6 +4,9 @@
     <string name="load_data">Отримати дані</string>
     <string name="save_data">Зберегти дані</string>
 
+    <string name="name">Назва</string>
+    <string name="description">Опис</string>
+
     <string name="available">In stock</string>
     <string name="unavailable">Out of stock</string>
 </resources>

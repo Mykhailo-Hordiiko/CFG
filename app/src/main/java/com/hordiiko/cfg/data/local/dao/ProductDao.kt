@@ -14,10 +14,6 @@ import kotlinx.coroutines.flow.Flow
 interface ProductDao {
 
     @Transaction
-    @Query("SELECT * FROM products ORDER BY id ASC")
-    fun observeProducts(): Flow<List<ProductWithReviewsEntity>>
-
-    @Transaction
     suspend fun replaceProductsWithReviews(
         products: List<ProductEntity>,
         reviews: List<ReviewEntity>
@@ -34,6 +30,20 @@ interface ProductDao {
 
     @Insert(onConflict = OnConflictStrategy.REPLACE)
     suspend fun insertReviews(reviews: List<ReviewEntity>)
+
+    @Transaction
+    @Query("SELECT * FROM products ORDER BY id ASC")
+    fun observeProducts(): Flow<List<ProductWithReviewsEntity>>
+
+    @Query("SELECT * FROM products WHERE id = :id")
+    suspend fun getProductById(id: Long): ProductEntity?
+
+    @Query("UPDATE products SET name = :name, description = :description WHERE id = :id")
+    suspend fun updateProduct(
+        id: Long,
+        name: String,
+        description: String
+    )
 
     @Query("DELETE FROM products")
     suspend fun deleteAllProducts()

@@ -7,6 +7,7 @@ import com.hordiiko.cfg.data.mapper.toDomain
 import com.hordiiko.cfg.data.mapper.toEntity
 import com.hordiiko.cfg.data.remote.api.ProductApi
 import com.hordiiko.cfg.data.remote.dto.ProductDto
+import com.hordiiko.cfg.domain.model.Product
 import com.hordiiko.cfg.domain.model.ProductWithReviews
 import com.hordiiko.cfg.domain.repository.ProductRepository
 import kotlinx.coroutines.flow.Flow
@@ -47,4 +48,19 @@ class ProductRepositoryImpl @Inject constructor(
                         productWithReviews.toDomain()
                     }
             }
+
+    override suspend fun getProductById(id: Long): Product? =
+        productDao.getProductById(id)?.toDomain()
+
+    override suspend fun updateProduct(
+        id: Long,
+        name: String,
+        description: String
+    ) {
+        productDao.updateProduct(
+            id = id,
+            name = name,
+            description = description
+        )
+    }
 }
