@@ -6,7 +6,7 @@
 
         <variable
             name="uiState"
-            type="com.hordiiko.cfg.presentation.loadProducts.LoadProductsUiState" />
+            type="com.hordiiko.cfg.presentation.loadProducts.model.LoadProductsUiState" />
 
         <variable
             name="viewModel"

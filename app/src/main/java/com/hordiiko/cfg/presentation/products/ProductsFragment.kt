@@ -33,16 +33,17 @@ class ProductsFragment : Fragment(R.layout.fragment_products) {
         observeUiState()
     }
 
+    override fun onDestroyView() {
+        binding.productsRecyclerView.adapter = null
+        _binding = null
+
+        super.onDestroyView()
+    }
+
     private fun observeUiState() {
         viewModel.uiState.observe(viewLifecycleOwner) { uiState ->
             binding.uiState = uiState
         }
-    }
-
-    override fun onDestroyView() {
-        binding.productsRecyclerView.adapter = null
-        _binding = null
-        super.onDestroyView()
     }
 
     private fun navigateToEditProduct(productId: Long) {

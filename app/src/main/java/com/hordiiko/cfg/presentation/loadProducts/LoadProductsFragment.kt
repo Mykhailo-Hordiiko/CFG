@@ -7,6 +7,7 @@ import androidx.fragment.app.viewModels
 import androidx.navigation.fragment.findNavController
 import com.hordiiko.cfg.R
 import com.hordiiko.cfg.databinding.FragmentLoadProductsBinding
+import com.hordiiko.cfg.presentation.loadProducts.model.LoadProductsEvent
 import dagger.hilt.android.AndroidEntryPoint
 
 @AndroidEntryPoint
@@ -29,6 +30,12 @@ class LoadProductsFragment : Fragment(R.layout.fragment_load_products) {
         observeEvent()
     }
 
+    override fun onDestroyView() {
+        _binding = null
+
+        super.onDestroyView()
+    }
+
     private fun observeUiState() {
         viewModel.uiState.observe(viewLifecycleOwner) { uiState ->
             binding.uiState = uiState
@@ -44,10 +51,5 @@ class LoadProductsFragment : Fragment(R.layout.fragment_load_products) {
                     )
             }
         }
-    }
-
-    override fun onDestroyView() {
-        super.onDestroyView()
-        _binding = null
     }
 }

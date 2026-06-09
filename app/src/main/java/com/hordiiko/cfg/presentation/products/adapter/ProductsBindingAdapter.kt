@@ -25,7 +25,6 @@ fun bindImageUrl(
 ) {
     Glide.with(imageView)
         .load(imageUrl)
-        //.load("https://picsum.photos/400/400")
         .placeholder(android.R.drawable.ic_menu_gallery)
         .error(android.R.drawable.ic_menu_report_image)
         .into(imageView)

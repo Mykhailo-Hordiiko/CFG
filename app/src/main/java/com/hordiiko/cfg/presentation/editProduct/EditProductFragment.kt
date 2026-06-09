@@ -35,6 +35,7 @@ class EditProductFragment : Fragment(R.layout.fragment_edit_product) {
 
     override fun onDestroyView() {
         _binding = null
+
         super.onDestroyView()
     }
 
