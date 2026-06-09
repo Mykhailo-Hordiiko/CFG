@@ -25,6 +25,7 @@ class EditProductViewModel @Inject constructor(
     val event: LiveData<EditProductEvent> = _event
 
     fun loadProduct(id: Long) {
+        if (productId != null) return
         productId = id
 
         viewModelScope.launch {
